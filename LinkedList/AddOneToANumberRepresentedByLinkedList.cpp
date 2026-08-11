@@ -24,14 +24,14 @@ struct ListNode
 
 class Solution {
 public:
-  ListNode* helper(ListNode* temp){
+  int helper(ListNode* temp){
     if(temp==nullptr)
       return 1;
     int carry=helper(temp->next);
-    temp->data+=carry;
-    if(temp->data<10)
+    temp->val+=carry;
+    if(temp->val<10)
        return 0;
-    temp->data=0;
+    temp->val=0;
      return 1;
   }
     ListNode *addOne(ListNode *head) {
