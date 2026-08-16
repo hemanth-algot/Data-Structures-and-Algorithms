@@ -10,7 +10,7 @@ public:
         else if(ch=='+'||ch=='-')
           return 1;
         else 
-         return 0;
+         return -1;
     
     }
     string infixToPostfix(string s) {
