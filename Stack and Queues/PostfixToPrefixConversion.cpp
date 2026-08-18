@@ -2,7 +2,7 @@
 
 class Solution {
 public:
-    string postToPre(string postfix) {
+    string postToPre(string s) {
         // Your code goes here
         stack<string>st;
         int i=0;
