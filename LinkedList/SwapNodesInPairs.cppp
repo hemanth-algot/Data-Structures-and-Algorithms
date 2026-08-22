@@ -1,0 +1,46 @@
+
+//Problem:Swap Nodes In Pairs
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        if(head==NULL||head->next==NULL)
+           return head;
+       stack<ListNode*>st;
+       ListNode* temp=head;
+       ListNode* prev=NULL;
+      ListNode* dummynode=new ListNode(-1);
+      ListNode* res=dummynode;
+      while(temp!=NULL){
+         prev=temp;
+         temp=temp->next;
+         prev->next=NULL;
+         st.push(prev);
+         if(st.size()==2){
+            ListNode* newnode=st.top();
+            res->next=newnode;
+            st.pop();
+            res=res->next;
+            newnode=st.top();
+            res->next=newnode;
+             st.pop();
+            res=res->next;
+         }
+      }
+      if(!st.empty()){
+        ListNode* newnode=st.top();
+        st.pop();
+        res->next=newnode;
+      }
+      return dummynode->next;
+    }
+};
